@@ -51,6 +51,8 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
   gem "rspec-rails", "~> 6.1.0"
+  # detect N+1 problem
+  gem "bullet"
 end
 
 group :development do
@@ -65,19 +67,28 @@ group :development do
 
   gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 
+  # for bin/rspec command
+  gem "spring-commands-rspec"
   # coding format
   gem "rubocop-rails", require: false
+  gem "rubocop-capybara", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubocop-rspec_rails", require: false
   # add schema summary to the top of each of models, specs, etc ...
   gem 'annotate'
-  # detect N+1 problem
-  gem 'bullet'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "faker"
 end
 
 # templates
 gem "slim-rails"
+# for user auth and session
+gem "authlogic"
+# for postgres table-id
+gem "uuid7", "~> 0.2.0"
+

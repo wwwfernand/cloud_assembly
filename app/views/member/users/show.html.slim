@@ -1,0 +1,55 @@
+.profile__content-container.gel-layout__item.gel-1_1.gel-8_12--tablet.gel-9_12--desktop.u-padding-left-none[data-testid="content-container"]
+  .u-padding-double.u-padding-quad--tablet.u-padding-right-left-hex--desktop
+    .spinner.spinner--fill
+    .profile__content-limiter--wide
+      .form
+        .header
+          h2.heading
+            span
+              | Personal details
+        #email-field.field.field--static
+          .field__input-container.field__input-container--primary-content
+            .field__label
+              span
+                | Email
+            .field__input
+              = current_user.email
+            .field__decoration
+          .field__input-container.field__input-container--secondary-content
+            a.link.link--primary[href="javascript:void(0)" aria-label="Edit Email" target="_self"]
+              span.link__text
+                span
+                  | Edit
+            .link__icon.link__icon--pen
+              img src="#{image_url('pen_farrington-blue.svg')}" title="edit"
+        #password-field.field.field--static
+          .field__input-container.field__input-container--primary-content
+            .field__label
+              span
+                | Password
+            .field__input
+              | ••••••••
+            .field__decoration
+          .field__input-container.field__input-container--secondary-content
+            a.link.link--primary[href="javascript:void(0)" aria-label="Edit Password" target="_self"]
+              span.link__text
+                span
+                  | Edit
+            .link__icon.link__icon--pen
+              img src="#{image_url('pen_farrington-blue.svg')}" title="edit"
+        #display-name-field.field.field--static
+          .field__input-container.field__input-container--primary-content
+            .field__label
+              span
+                | Display name
+            .field__input
+              span
+                = current_user.username
+            .field__decoration
+          .field__input-container.field__input-container--secondary-content
+            a.link.link--primary[href="javascript:void(0)" aria-label="Add Display name" target="_self"]
+              span.link__text
+                span
+                  | Add
+            .link__icon.link__icon--pen
+              img src="#{image_url('pen_farrington-blue.svg')}" title="edit"

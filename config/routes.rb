@@ -4,4 +4,11 @@ Rails.application.routes.draw do
   get 'up' => 'rails/health#show', as: :rails_health_check
 
   root 'top#index'
+  resources :users, only: :create
+  post    'login',     to: 'user_sessions#create', constraints: { format: 'json' }
+  delete  'logout',    to: 'user_sessions#destroy'
+  namespace :member do
+    resource :user, only: [:show, :update], path: :profile
+  end
+  resources :users,  :path => :authors, param: :name, only: :show
 end

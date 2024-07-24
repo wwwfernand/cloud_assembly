@@ -1,0 +1,46 @@
+.Footer.pt-4.mt-4
+  .container
+    .Footer-inner
+      .row
+        .col-12.col-sm-6.col-md-4.col-lg-3.about-col
+          a.logo.nuxt-link-exact-active.nuxt-link-active href="#{root_path}"
+            img src="#{image_url('logo.png')}" title="#{site_name}"
+          ul.social-media
+            li
+              a href="javascript:void(0)" target="_blank"
+                svg.icon.sprite-icons xmlns="http://www.w3.org/2000/svg"
+                  use href="#{image_url('icons.svg')}#i-facebook-grey" xlink:href="#{image_url('icons.svg')}#i-facebook-grey"
+            li
+              a href="javascript:void(0)" target="_blank"
+                svg.icon.sprite-icons xmlns="http://www.w3.org/2000/svg"
+                  use href="#{image_url('icons.svg')}#i-twitter-grey" xlink:href="#{image_url('icons.svg')}#i-twitter-grey"
+            li
+              a href="javascript:void(0)" target="_blank"
+                svg.icon.sprite-icons xmlns="http://www.w3.org/2000/svg"
+                  use href="#{image_url('icons.svg')}#i-instagram-grey" xlink:href="#{image_url('icons.svg')}#i-instagram-grey"
+            li
+              a href="javascript:void(0)" target="_blank"
+                svg.icon.sprite-icons xmlns="http://www.w3.org/2000/svg"
+                  use href="#{image_url('icons.svg')}#i-youtube-grey" xlink:href="#{image_url('icons.svg')}#i-youtube-grey"
+        .col-12.col-sm-6.col-md-8.col-lg-9
+          .row
+            .col-12.col-sm-6.col-lg-4
+              ul.footer-menu
+                li
+                  a href=about_path
+                    | About Us
+                li
+                  a href=terms_of_use_path
+                    | Terms of Use
+            .col-12.col-sm-6.col-lg-4
+              ul.footer-menu
+                li
+                  a href=privacy_policy_path
+                    | Privacy Policy
+                li
+                  a href=new_contact_us_path
+                    | Contact Us
+      .row
+        .copyright-box
+          span.copyright-text
+            Copyright © #{Date.current.year} #{site_name}.

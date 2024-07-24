@@ -18,7 +18,7 @@ This repository will show the step-by-step developments of my blog site, Cloud A
 ## Pre-requisite
 
 - Ruby v3.1.6
-- Postgres server v13.14
+- Postgres server v16.3
 
 ## Configuration (only once)
 
@@ -54,40 +54,46 @@ This repository will show the step-by-step developments of my blog site, Cloud A
 ## Things To Do Before Submitting a PR
 
 - Run and pass RuboCop
+```
+$ rubocop
+```
 - Execute and pass all test suites
+```
+$ bundle exec rspec spec
+```
 
 
 # Milestone
 ## User Management
-   - Registration
-   - Login
-   - Profile Edit (\*)
-   - Forgot Password (\*)
+   - [ ] Registration
+   - [ ] Login
+   - [ ] Profile Edit (\*)
+   - [ ] Forgot Password (\*)
+   - [ ] SNS Login (\*)
 
 ## Article Management
-   - Draft
-   - Publish
+   - [ ] Draft
+   - [ ] Publish
 
 ## Main Pages
-   - Root
-   - Article
-   - Articles by Tags (*)
-   - Contact Us (*)
-   - Privacy Policies, and other static pages (*)
+   - [ ] Top
+   - [ ] Article View
+   - [ ] Articles by Tags (*)
+   - [ ] Contact Us (*)
+   - [ ] Privacy Policies, and other static pages (*)
 
 ## Image Management
-   - Upload Image
-   - Add Image to Article
+   - [ ] Upload Image
+   - [ ] Add Image to Article
 
 ## Tagging
-   - Add Tagging to Articles
+   - [ ] Add Tagging to Articles
 
 ## Search
-   - Implement Search Functionality
+   - [ ] Implement Search Functionality
 
 ## Add-ons
-   - Allow Users to Create Their Own Page Template
-   - Localize Strings
+   - [ ] Allow Users to Create Their Own Page Template
 
 
 (*) These items will be developed later in the milestone.

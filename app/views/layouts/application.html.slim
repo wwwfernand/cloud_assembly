@@ -1,0 +1,22 @@
+doctype html
+html.light-mode lang="en"
+  head
+    - title = content_for?(:title) ? full_title(yield(:title)) : site_name
+    title
+      == title
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+    == yield :head if content_for?(:head)
+
+  body
+    .main data-controller="base"
+      = render partial: 'shared/header'
+      .content
+        div
+          = content_for?(:content) ? yield(:content) : yield
+      = render partial: 'shared/footer'
+      = render partial: 'user_sessions/new'
+      = render partial: 'users/new'
