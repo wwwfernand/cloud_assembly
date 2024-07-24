@@ -14,14 +14,16 @@
 #
 default: &default
   adapter: postgresql
+  host: localhost
+  port: 5432
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
-  database: cloud_assembly_development
+  database: <%= Rails.application.credentials.database_name %>
+  username: <%= Rails.application.credentials.database_username %>
+  password: <%= Rails.application.credentials.database_password %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -79,6 +81,6 @@ test:
 #
 production:
   <<: *default
-  database: cloud_assembly_production
-  username: cloud_assembly
-  password: <%= ENV["CLOUD_ASSEMBLY_DATABASE_PASSWORD"] %>
+  database: <%= Rails.application.credentials.database_name %>
+  username: <%= Rails.application.credentials.database_username %>
+  password: <%= Rails.application.credentials.database_password %>

@@ -1,0 +1,35 @@
+.modal.z-10.hidden.mi-login [ data-controller="user-create"
+  data-user-create-target="formModal"
+  data-user-create-isopen-value="false"
+  data-action="showSignUpForm@window->user-create#showForm
+    keyup@window->user-create#closeWithKeyboard"
+]
+  .modal-container
+    .modal-left data-action="click@window->user-create#closeBackground"
+      h1.modal-title Join #{site_name}
+      p.modal-desc We can't wait for your adventures!
+      = form_with model: User.new, format: :json, id: 'registrationForm', data: { action: "submit->user-create#submit" } do |f|
+        .error-notice.hidden data-user-create-target="errorBox"
+          .oaerror.danger
+            ul
+        .input-block
+          = f.label :email, class: "input-label"
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"
+        .input-block
+          = f.label :username, 'Pen Name', class: "input-label"
+          = f.text_field :username, autocomplete: "username", placeholder: "Pen Name"
+        .input-block
+          = f.label :password, class: "input-label"
+          = f.password_field :password, autocomplete: "current-password", placeholder: "Password"
+        .modal-buttons
+          <div></div>
+          = f.submit "Sign up", class: "input-button"
+      p.sign-up
+        | Already have an account?
+        a href="javascript:void(0)" data-action="user-create#switchLoginForm"
+          | Log in
+    .modal-right
+      img src=image_url('stonehenge.jpg')
+    button.icon-button.close-button data-action="switchLoginForm#hideForm"
+      svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+        path d="M 25 3 C 12.86158 3 3 12.86158 3 25 C 3 37.13842 12.86158 47 25 47 C 37.13842 47 47 37.13842 47 25 C 47 12.86158 37.13842 3 25 3 z M 25 5 C 36.05754 5 45 13.94246 45 25 C 45 36.05754 36.05754 45 25 45 C 13.94246 45 5 36.05754 5 25 C 5 13.94246 13.94246 5 25 5 z M 16.990234 15.990234 A 1.0001 1.0001 0 0 0 16.292969 17.707031 L 23.585938 25 L 16.292969 32.292969 A 1.0001 1.0001 0 1 0 17.707031 33.707031 L 25 26.414062 L 32.292969 33.707031 A 1.0001 1.0001 0 1 0 33.707031 32.292969 L 26.414062 25 L 33.707031 17.707031 A 1.0001 1.0001 0 0 0 32.980469 15.990234 A 1.0001 1.0001 0 0 0 32.292969 16.292969 L 25 23.585938 L 17.707031 16.292969 A 1.0001 1.0001 0 0 0 16.990234 15.990234 z"

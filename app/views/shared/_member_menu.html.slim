@@ -1,0 +1,23 @@
+.row.login-zumi class=(class_names({hidden: !current_user.present?}, 'header-bottom'))
+  .container
+    .Header-inner
+      <div></div>
+      .Header-End
+        nav.Navigation data-user-menu-target="menuNav" 
+          ul.Navigation-list
+            li.menu-item.member.mi-login-sp class=('hidden' if current_user.present?)
+              .menu-parent
+                a href="javascript:void(0)" data-action="user-menu#switchLoginForm"
+                  span.text Login
+            li.menu-item.member.login-zumi-sp class=('hidden' unless current_user.present?)
+              .menu-parent
+                a href=new_path
+                  span.text New Blog
+            li.menu-item.member.login-zumi class=('hidden' unless current_user.present?)
+              .menu-parent
+                a href=member_articles_path
+                  span.text My Blogs
+            li.menu-item.member.login-zumi class=('hidden' unless current_user.present?)
+              .menu-parent
+                a href="javascript:void(0)" data-action="user-menu#dispatchLogoutUser"
+                  span.text Logout

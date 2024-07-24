@@ -1,0 +1,10 @@
+= cache @user do
+  - if @user.avatar_link.present?
+      img src=@user.avatar_link loading="lazy"
+  .vw-article-body
+    .vw-article-header.mb-3
+      .vw-article-title.uppercase
+        = "ABOUT #{@user.username}"
+      <hr>
+    .vw-article-content
+      <!-- TODO: add user template -->
