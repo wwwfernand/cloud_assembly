@@ -10,6 +10,21 @@ While I have traditionally used Bootstrap and yarn/npm for front-end development
 - It seems that [Hotwire Stimulus](https://stimulus.hotwired.dev/) simplifies the process of mapping data attributes to JavaScript-bundled controllers. I appreciate the concept of storing data and state directly in HTML rather than in JavaScript objects, as it can enhance maintainability and clarity.
 - [Tailwind CSS](https://tailwindcss.com/) offers a comprehensive set of pre-built utility classes for styling. However, unlike Bootstrap, it doesn't include a base set of components such as buttons by default. I am curious to see how this impacts rapid prototyping. On one hand, the lack of pre-made components might slow down initial development. On the other hand, Tailwind's approach allows for more customisation and avoids the need to override default styles, which could ultimately lead to a more tailored and cohesive design.
 
+# How to Post in the Blog
+Posting a blog involves four states:
+
+### Draft
+- You can save your content as a draft, meaning it will not be posted on the main page yet.
+Note: Although draft articles are not publicised, their links can already be accessed by anyone.
+
+### Published
+- Published articles will be featured on the main page and may also be posted on social media (SNS).
+
+### Scheduled Publish
+- Scheduled publications are similar to drafts in that they are not yet featured to the public, and editing is still possible.
+
+### Revise
+The contents of published articles can still be revised. While the original content has already been posted, revisions are possible. If you save a revision as a draft, it will not affect the currently displayed content.
 
 # Getting started
 
@@ -65,15 +80,15 @@ $ bundle exec rspec spec
 
 # Milestone
 ## User Management
-   - [ ] Registration
-   - [ ] Login
+   - [x] Registration
+   - [x] Login
    - [ ] Profile Edit (\*)
    - [ ] Forgot Password (\*)
    - [ ] SNS Login (\*)
 
 ## Article Management
-   - [ ] Draft
-   - [ ] Publish
+   - [x] Draft
+   - [x] Publish
 
 ## Main Pages
    - [ ] Top

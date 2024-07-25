@@ -1,0 +1,19 @@
+= cache article do
+  .article-logo
+    img src=article.image_link loading="lazy" title=article.title
+  .vw-article-body
+    .vw-article-header.mb-3
+      .vw-tags
+        - @article.tags.each do |tag|
+          a.tag-items href=article_tag_path(tag.name) title=tag.name
+            = tag.name
+      .vw-article-title = article.title
+      <hr>
+      .vw-article-meta
+        .vw-bar__placeholder
+          = render 'users/avatar', user: article.user
+          time 
+            = datetime_str(publish_at)
+            |  |
+    .vw-article-content
+      = sanitize body

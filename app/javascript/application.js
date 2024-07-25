@@ -4,3 +4,6 @@ import "controllers"
 
 import $ from "jquery"
 
+import 'flowbite';
+import 'flowbite-datepicker';
+window.$ = window.jQuery = $

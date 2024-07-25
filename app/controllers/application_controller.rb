@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
+  def set_default_response_format
+    request.format = :json unless params[:format]
+  end
+
   def show_errors(exception)
     # TODO: notify error
     errors = JSON::Errors.from_exception(error: exception, object: nil)

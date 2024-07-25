@@ -36,16 +36,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  include_context 'users_mock_context'
+
   describe '.valid?' do
     subject { described_class.new(params).valid? }
 
-    let(:params) do
-      {
-        username: Faker::Alphanumeric.alpha(number: 4),
-        email: 'test@example.com',
-        password: 'hY5l%V2x'
-      }
-    end
+    let(:params) { user_create_valid_params }
 
     context 'when valid email, username, password' do
       it { is_expected.to be true }

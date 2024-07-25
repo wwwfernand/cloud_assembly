@@ -3,6 +3,7 @@ require:
   - rubocop-capybara
   - rubocop-rspec
   - rubocop-rspec_rails
+  - rubocop-factory_bot
 AllCops:
   Exclude:
     - 'Gemfile'
@@ -13,3 +14,7 @@ Style/Documentation:
   Enabled: false
 Metrics/MethodLength:
   Max: 12
+RSpec/NestedGroups:
+  Max: 5
+RSpec/AnyInstance:
+  Enabled: false

@@ -1,0 +1,2 @@
+= render 'articles/article', article: @article, 
+  body: @article.draft_html_body, publish_at: @article.publish_at || Time.zone.now

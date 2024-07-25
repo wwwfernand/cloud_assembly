@@ -1,0 +1,23 @@
+.profile__content-container.gel-layout__item.gel-1_1.gel-8_12--tablet.gel-9_12--desktop.u-padding-left-none[data-testid="content-container"]
+  .u-padding-double.u-padding-quad--tablet.u-padding-right-left-hex--desktop
+    .profile__content-limiter--wide
+      .form
+        .header
+          h2.heading
+            span
+              | Blogs
+        == pagy_nav(@pagy)
+        .cms-list
+          - @articles.each do |article|
+            .cms-items
+              .article-title
+                = link_to article.title, edit_member_article_path(article.id)
+              .article-tags.whitespace-normal
+                .tags
+                  - article.tag_names.each do |tag|
+                    span
+                      = tag
+              .article-status
+                = status_html(article)
+            .field__decoration
+        == pagy_nav(@pagy)
