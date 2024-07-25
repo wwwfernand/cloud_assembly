@@ -2,6 +2,7 @@
 
 # Controls user login and logout
 class UserSessionsController < ApplicationController
+  before_action :set_default_response_format
   before_action :require_no_user, only: :create
 
   skip_before_action :verify_authenticity_token, only: :destroy

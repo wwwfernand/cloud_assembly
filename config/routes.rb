@@ -7,8 +7,17 @@ Rails.application.routes.draw do
   resources :users, only: :create
   post    'login',     to: 'user_sessions#create', constraints: { format: 'json' }
   delete  'logout',    to: 'user_sessions#destroy'
+
+  scope module: "member" do
+    get 'new',      to: 'articles#new'
+    post 'new',     to: 'articles#create', as: :articles, constraints: { format: 'json' }
+  end
   namespace :member do
+    resources :articles, only: [:index, :edit, :update]
     resource :user, only: [:show, :update], path: :profile
   end
+
+  get 'articles/:id',  	to: 'articles#show', 				as: :show_article
+  get 'drafts/:id', 	to: 'drafts#show', 	only: :show,	as: :draft_article
   resources :users,  :path => :authors, param: :name, only: :show
 end

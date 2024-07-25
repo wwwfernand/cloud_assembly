@@ -2,6 +2,7 @@
 
 # Controls user registration and user template
 class UsersController < ApplicationController
+  before_action :set_default_response_format, only: :create
   before_action :require_no_user, only: :create
   before_action :set_user, only: :show
 

@@ -53,6 +53,8 @@ group :development, :test do
   gem "rspec-rails", "~> 6.1.0"
   # detect N+1 problem
   gem "bullet"
+  # test helper
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -74,6 +76,7 @@ group :development do
   gem "rubocop-capybara", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
+  gem 'rubocop-factory_bot', require: false
   # add schema summary to the top of each of models, specs, etc ...
   gem 'annotate'
 end
@@ -89,6 +92,15 @@ end
 gem "slim-rails"
 # for user auth and session
 gem "authlogic"
+# for pagination
+gem "pagy", '~> 8.6' # omit patch digit
+# for scope
+gem "pundit"
+# for decorator
+gem "draper"
 # for postgres table-id
 gem "uuid7", "~> 0.2.0"
-
+# for representer
+gem "multi_json"
+gem "representable"
+gem "roar"

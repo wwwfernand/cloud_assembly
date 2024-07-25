@@ -3,6 +3,9 @@
 module Member
   # Controls modification of users info
   class UsersController < Member::BaseController
+    before_action :set_default_response_format, only: :update
+    before_action :require_user
+    
     # GET /member/profile
     def show; end
 

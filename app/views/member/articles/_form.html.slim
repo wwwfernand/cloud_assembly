@@ -1,0 +1,37 @@
+div [data-controller="articles"
+  data-articles-index-url-value=member_articles_path
+  data-articles-tag-list-value=""
+  data-articles-content-value="" ]
+  = form_with(model: article, url: url, format: :json, id: 'articleForm', data: { 'articles-target': "articleForm", action: 'submit->base#setCurrentUser submit->articles#onSubmit' }) do |f|
+    .error-notice.hidden data-articles-target="errorBox"
+      .oaerror.danger
+        ul
+    div
+      = f.text_field :title, class: "mt-0 block w-full border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black", placeholder: "*Title", data: { action: "input->articles#updateFormInputs input@window->articles#updateContent", 'articles-target': 'title' }
+    div.mb-4
+      = f.text_field :image_link, class: "mt-0 block w-full border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black", placeholder: "*Article Image Link", data: { action: "input->articles#updateFormInputs", 'articles-target': "imageLink" }
+      span.note.mx-3.text-xs
+        | *Upload and select an image below.
+    .mt-8
+      #editor-container.editor-container.editor-container_balloon-editor.editor-container_include-style.editor-container_include-block-toolbar
+        #editor [ data-articles-target="editor"
+          data-action="input->articles#updateFormInputs"
+          data-initial-data=(article.draft_section || article.build_draft_section).html_body
+        ]
+    div.mb-4
+      = f.text_field :tag_list, class: "mt-0 block w-full border-0 border-b-2 border-gray-200 focus:ring-0 focus:border-black", placeholder: "tags", data: { 'articles-target': 'tagList', action: "articles#updateTagList" }
+      .tag-lists-box.mt-2 data-articles-target='tagListBox'
+
+    .flex.justify-between.mt-8
+      .flex.justify-start.content-center
+        = link_to "< Back to My Blogs", member_articles_path, class: "px-8 py-3.5 cursor-pointer"
+      .flex.justify-end role="group"
+        = f.submit 'Draft', name: 'state', value: Article::STATES[:draft], class: "bg-yellow-500 hover:bg-yellow-400 text-white font-medium border-b-4 border-yellow-700 hover:border-yellow-500 rounded text-sm px-8 py-3.5 cursor-pointer"
+        = f.submit 'Publish Now', name: 'state', value: Article::STATES[:publish_now], class: "focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 px-8 py-3.5 ml-6 cursor-pointer hidden", data: { 'articles-target': "publishNowBtn" }
+    
+    .mt-8.hidden data-articles-target="publishLaterBox"
+      .flex.justify-end.content-center role="group"
+        = f.submit 'Publish Later', name: 'state', value: Article::STATES[:publish_later], class: 'me-2 m-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 px-8 py-3.5 cursor-pointer'
+        = f.datetime_field :publish_at, data: { 'articles-target': "publishTime" }
+
+  = render 'member/user_images/index'
