@@ -11,7 +11,7 @@ class DraftsController < Member::BaseController
   private
 
   def set_article
-    @article = Article.where(id: params[:id]).first
+    @article = Article.where(id: params[:id]).first&.decorate
     redirect_to root_path unless @article
   end
 

@@ -39,7 +39,7 @@ module ArticlesHelper
   end
 
   def draft_tag(article)
-    link_to member_article_draft_path(article.id), target: '_blank', rel: 'noopener' do
+    link_to draft_article_path(article.id), target: '_blank', rel: 'noopener' do
       content_tag(:span, 'draft')
     end
   end

@@ -21,6 +21,9 @@ module Member
     # GET /new
     def new; end
 
+    # GET /member/articles/1/edit
+    def edit; end
+
     # POST /new.json
     def create
       article = Article.new(create_params)
@@ -33,9 +36,6 @@ module Member
         end
       end
     end
-
-    # GET /member/articles/1/edit
-    def edit; end
 
     # PATCH/PUT /member/articles/1.json
     def update

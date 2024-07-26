@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   namespace :member do
     resources :articles, only: [:index, :edit, :update]
+    resources :user_images, only: [:index, :create], constraints: { format: 'json' }
     resource :user, only: [:show, :update], path: :profile
   end
 

@@ -34,7 +34,7 @@ class Article < ApplicationRecord
 
   scope :public_view, lambda {
     where(status: %i[published revise])
-      .where('publish_at <= ?', Time.zone.now)
+      .where(publish_at: ..Time.zone.now)
   }
 
   scope :with_author, -> { includes(:user) }
@@ -55,8 +55,8 @@ class Article < ApplicationRecord
     publish_later: :publish_later
   }.freeze
 
-  before_validation :new_or_redraft,      on: :draft
-  before_validation :prepare_to_publish,  on: %i[publish_now publish_later]
+  before_validation :new_or_redraft
+  before_validation :prepare_to_publish, on: %i[publish_now publish_later]
 
   validate    :tag_count
   validates   :title, presence: true
@@ -72,11 +72,11 @@ class Article < ApplicationRecord
   end
 
   def public?
-    (published? || revise?) && publish_at.past?
+    publish_at&.past?
   end
 
   def future_publish?
-    published? && publish_at.future?
+    publish_at&.future?
   end
 
   def tag_list
@@ -84,7 +84,7 @@ class Article < ApplicationRecord
   end
 
   def tag_list=(names)
-    self.tag_names = names.gsub(/,/, ' ').gsub(/[^a-z0-9 ]/, '').gsub(/ +/, ' ').strip.downcase.split(' ')
+    self.tag_names = names.gsub(',', ' ').gsub(/[^a-z0-9 ]/, '').gsub(/ +/, ' ').strip.downcase.split(' ')
   end
 
   private
@@ -110,9 +110,15 @@ class Article < ApplicationRecord
   end
 
   def new_or_redraft
-    return if draft?
+    return if %i[publish_now publish_later].include?(validation_context)
+    return if publish_at_was.blank?
 
-    self.status = :revise
+    if status_was == 'published' && publish_at.past?
+      self.status = :revise
+    else
+      self.status = :draft
+      self.publish_at = nil
+    end
   end
 
   def prepare_to_publish
@@ -124,6 +130,8 @@ class Article < ApplicationRecord
   end
 
   def move_draft_to_publish_section
+    return if draft_section.blank?
+
     build_publish_section unless publish_section
     publish_section.html_body = draft_section.html_body
   end

@@ -88,4 +88,7 @@ Rails.application.configure do
       system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
     end
   end
+
+  # add test definiton template for factory bot
+  config.factory_bot.definition_file_paths = ["custom/factories"]
 end

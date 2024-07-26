@@ -8,7 +8,7 @@
 #  image_link :string
 #  publish_at :datetime
 #  rank       :integer          default(0)
-#  status     :integer          default("draft"), not null
+#  status     :integer          default(0), not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

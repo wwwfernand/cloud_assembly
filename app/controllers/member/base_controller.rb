@@ -4,7 +4,7 @@ module Member
   # Common methods for logged in user actions
   class BaseController < ApplicationController
     include Pundit::Authorization
-    
+
     layout 'member'
 
     private
