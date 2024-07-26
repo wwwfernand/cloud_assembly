@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-shared_context 'users_mock_context' do
+shared_context 'with users mock' do
   let(:user_create_valid_params) do
     {
       username: Faker::Alphanumeric.alpha(number: 4),

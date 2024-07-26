@@ -17,7 +17,7 @@ require 'authlogic/test_case'
 
 RSpec.describe '/user_sessions', type: :request do
   include Authlogic::TestCase
-  include_context 'users_mock_context'
+  include_context 'with users mock'
 
   let(:user_session_params) { user_create_valid_params.slice(:email, :password) }
 

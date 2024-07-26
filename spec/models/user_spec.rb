@@ -36,7 +36,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  include_context 'users_mock_context'
+  include_context 'with users mock'
 
   describe '.valid?' do
     subject { described_class.new(params).valid? }

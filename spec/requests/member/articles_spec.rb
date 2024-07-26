@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe '/articles', type: :request do
-  include_context 'articles_mock_context'
+  include_context 'with articles mock'
 
   let(:current_user) { create(:user) }
 

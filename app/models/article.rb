@@ -26,9 +26,9 @@ class Article < ApplicationRecord
   has_one :draft_section, lambda {
                             where(status: :draft)
                           }, class_name: 'ArticleSection', dependent: :destroy, autosave: true,
-                             inverse_of: :article
+                             inverse_of: false
   has_one :publish_section, -> { where(status: :publish) }, class_name: 'ArticleSection', dependent: :destroy,
-                                                            inverse_of: :article
+                                                            inverse_of: false
 
   accepts_nested_attributes_for :draft_section, update_only: true
 

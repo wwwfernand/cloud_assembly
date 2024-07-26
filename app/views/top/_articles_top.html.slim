@@ -1,0 +1,14 @@
+.Homepage
+  .layoutMain.mb-4
+    .container
+      div
+        div
+          .row
+            .col-12.col-sm-12.col-lg-6.column-start
+              .Card.Card-First-News.layoutFourScope
+                = render 'top/article_main_preview', article: @main_articles.first
+                = render 'top/article_main_list', articles: @main_articles.drop(1)
+            .col-12.col-sm-6.col-lg-3.column-middle
+              = render 'top/articles_author_related', articles: @author_related_articles
+            .col-12.col-sm-6.col-lg-3.column-end
+              = render 'top/articles_tag_related', articles: @tag_related_articles

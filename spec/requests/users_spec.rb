@@ -15,7 +15,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/users', type: :request do
-  include_context 'users_mock_context'
+  include_context 'with users mock'
 
   # This should return the minimal set of attributes required to create a valid
   # User. As you add validations to User, be sure to

@@ -16,8 +16,5 @@
 #  index_article_sections_on_article_id  (article_id)
 #
 class ArticleSection < ApplicationRecord
-  belongs_to :article, inverse_of: :draft_section
-  belongs_to :article, inverse_of: :publish_section
-
   enum status: { draft: 0, publish: 1 }
 end
