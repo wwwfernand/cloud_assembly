@@ -9,8 +9,8 @@ class PasswordFormatValidator < ActiveModel::EachValidator
     (?=.*[[:^alnum:]]) # at least one symbol
   /x
 
-  PASSWORD_INVALID_MSG = 'must include lower and upper case letters, '\
-    'and at least one number and symbol'
+  PASSWORD_INVALID_MSG = 'must include lower and upper case letters, ' \
+                         'and at least one number and symbol'
 
   def validate_each(record, attribute, value)
     return if value.blank?

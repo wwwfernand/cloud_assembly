@@ -104,3 +104,7 @@ gem "uuid7", "~> 0.2.0"
 gem "multi_json"
 gem "representable"
 gem "roar"
+# for uploading images
+gem "shrine"
+# for image processing
+gem "mini_magick"

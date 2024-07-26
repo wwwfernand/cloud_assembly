@@ -2,7 +2,7 @@
 
 # Validate user.username
 class UsernameFormatValidator < ActiveModel::EachValidator
-  USERNAME_REGEXP = /\A[a-zA-Z0-9]+\z/
+  USERNAME_REGEXP = /\A[a-zA-Z0-9.-]+\z/
 
   def validate_each(record, attribute, value)
     return if value.blank?

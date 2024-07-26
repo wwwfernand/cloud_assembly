@@ -21,7 +21,7 @@ Note: Although draft articles are not publicised, their links can already be acc
 - Published articles will be featured on the main page and may also be posted on social media (SNS).
 
 ### Scheduled Publish
-- Scheduled publications are similar to drafts in that they are not yet featured to the public, and editing is still possible.
+- Scheduled publications are similar to drafts in that they are not yet featured to the public, and editing is still possible. If a scheduled post is modified, it will revert back to draft status.
 
 ### Revise
 The contents of published articles can still be revised. While the original content has already been posted, revisions are possible. If you save a revision as a draft, it will not affect the currently displayed content.
@@ -98,8 +98,8 @@ $ bundle exec rspec spec
    - [ ] Privacy Policies, and other static pages (*)
 
 ## Image Management
-   - [ ] Upload Image
-   - [ ] Add Image to Article
+   - [x] Upload Image
+   - [x] Add Image to Article
 
 ## Tagging
    - [ ] Add Tagging to Articles

@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.public_view.where(id: params[:id]).first
+    @article = Article.public_view.where(id: params[:id]).first&.decorate
     redirect_to root_path unless @article
   end
 end
