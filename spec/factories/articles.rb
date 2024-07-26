@@ -8,7 +8,7 @@
 #  image_link :string
 #  publish_at :datetime
 #  rank       :integer          default(0)
-#  status     :integer          default(0), not null
+#  status     :integer          default("draft"), not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -24,12 +24,12 @@ FactoryBot.define do
     tag_list { Faker::Lorem.words.join(' ') }
     image_link { Faker::Avatar.image }
     status { :draft }
-    draft_section { build(:article_section, :draft) }
+    association :draft_section, :draft, factory: :article_section, strategy: :build
     association :user
 
     trait :published do
       status { :published }
-      publish_section { build(:article_section, :publish) }
+      association :publish_section, :publish, factory: :article_section, strategy: :build
       publish_at { Time.zone.now }
     end
 
@@ -39,13 +39,13 @@ FactoryBot.define do
 
     trait :published_later do
       status { :published }
-      publish_section { build(:article_section, :publish) }
+      association :publish_section, :publish, factory: :article_section, strategy: :build
       publish_at { 2.days.from_now }
     end
 
     trait :revise do
       status { :revise }
-      publish_section { build(:article_section, :publish) }
+      association :publish_section, :publish, factory: :article_section, strategy: :build
       publish_at { Time.zone.now }
     end
   end

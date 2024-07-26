@@ -15,7 +15,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe '/articles', type: :request do
-  include_context 'articles_mock_context'
+  include_context 'with articles mock'
 
   # This should return the minimal set of attributes required to create a valid
   # Article. As you add validations to Article, be sure to
@@ -23,7 +23,7 @@ RSpec.describe '/articles', type: :request do
   describe 'GET /show' do
     context 'when article exists' do
       it 'renders a successful response' do
-        article = Article.create! article_create_valid_params
+        article = create(:article, :published)
         get show_article_url(article)
         expect(response).to be_successful
       end

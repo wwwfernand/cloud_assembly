@@ -7,11 +7,18 @@ require:
 AllCops:
   Exclude:
     - 'Gemfile'
-    - 'db/schema.rb'
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
+    - 'config.ru'
+    - 'Rakefile'
     - 'bin/*'
     - 'db/migrate/*'
+    - 'db/schema.rb'
+    - 'config/boot.rb'
+    - 'config/environment.rb'
+    - 'config/importmap.rb'
+    - 'config/puma.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
 Gemspec/AddRuntimeDependency: # new in 1.65
   Enabled: true
 Gemspec/DeprecatedAttributeAssignment: # new in 1.30
@@ -388,3 +395,5 @@ RSpec/NestedGroups:
   Max: 5
 RSpec/AnyInstance:
   Enabled: false
+RSpec/MultipleExpectations:
+  Max: 3

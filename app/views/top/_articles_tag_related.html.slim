@@ -1,0 +1,9 @@
+.CardList.Card-Column.Card-Spacing-3
+  - articles.each do |article|
+    .Card-Item
+      .Card.Card-Author-News size="small" direction="vertical"
+        a href=show_article_path(article.id)
+          .Card-Wrapper
+            .Card-End
+              .news-title
+                h3.title = article.title

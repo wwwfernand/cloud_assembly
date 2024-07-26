@@ -1,0 +1,11 @@
+.Card-footer.big-related-wrapper
+  .footer-title
+    | Related Storıes
+  .stories
+    - articles.each do |article|
+      .Card.Card-Standart.variant-no-image
+        a href=show_article_path(article.id)
+          .Card-Wrapper
+            .Card-End
+              .news-title
+                h2 = article.title

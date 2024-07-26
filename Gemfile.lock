@@ -147,6 +147,8 @@ GEM
     ffi (1.17.0-x86_64-linux-gnu)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    gutentag (2.6.2)
+      activerecord (>= 3.2.0)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -424,6 +426,7 @@ DEPENDENCIES
   error_highlight (>= 0.4.0)
   factory_bot_rails
   faker
+  gutentag (~> 2.6)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

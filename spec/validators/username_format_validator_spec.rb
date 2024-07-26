@@ -2,6 +2,18 @@
 
 require 'rails_helper'
 
+class TestUsernameFormatValidator
+  include ActiveModel::Validations
+
+  attr_accessor :username
+
+  validates :username, username_format: true
+
+  def initialize(username)
+    @username = username
+  end
+end
+
 describe UsernameFormatValidator, type: :validator do
   describe '#validate_each' do
     [
@@ -19,12 +31,9 @@ describe UsernameFormatValidator, type: :validator do
       ['?',            'abcd?001',   :invalid]
     ].each do |ctx, target, expected|
       context(ctx) do
-        let(:value) { target }
+        subject { TestUsernameFormatValidator.new(target).valid? }
 
-        it do
-          expect(subject).send({ valid: :to, invalid: :not_to }
-                              .fetch(expected), be_valid)
-        end
+        it { is_expected.to be({ valid: true, invalid: false }.fetch(expected)) }
       end
     end
   end

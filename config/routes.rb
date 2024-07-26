@@ -8,17 +8,18 @@ Rails.application.routes.draw do
   post    'login',     to: 'user_sessions#create', constraints: { format: 'json' }
   delete  'logout',    to: 'user_sessions#destroy'
 
-  scope module: "member" do
+  scope module: 'member' do
     get 'new',      to: 'articles#new'
     post 'new',     to: 'articles#create', as: :articles, constraints: { format: 'json' }
   end
   namespace :member do
-    resources :articles, only: [:index, :edit, :update]
-    resources :user_images, only: [:index, :create], constraints: { format: 'json' }
-    resource :user, only: [:show, :update], path: :profile
+    resources :articles, only: %i[index edit update]
+    resources :user_images, only: %i[index create], constraints: { format: 'json' }
+    resource :user, only: %i[show update], path: :profile
   end
 
-  get 'articles/:id',  	to: 'articles#show', 				as: :show_article
-  get 'drafts/:id', 	to: 'drafts#show', 	only: :show,	as: :draft_article
-  resources :users,  :path => :authors, param: :name, only: :show
+  get 'articles/:id', to: 'articles#show', as: :show_article
+  get 'drafts/:id', only: :show, to: 'drafts#show', as: :draft_article
+  resources :article_tags, path: :tags, param: :name, only: :show
+  resources :users, path: :authors, param: :name, only: :show
 end

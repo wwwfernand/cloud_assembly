@@ -2,5 +2,15 @@
 
 # Controls display of main pages
 class TopController < ApplicationController
-  def index; end
+  include PublishedArticles
+
+  before_action :set_articles, only: :index
+
+  def index
+    target_article = @main_articles.first
+    main_article_ids = @main_articles.ids
+    @tag_related_articles = tagged_articles(target_article.tag_names, exclude_article_ids: main_article_ids)
+    @author_related_articles = authored_articles(target_article.user_id,
+                                                 exclude_article_ids: main_article_ids + @tag_related_articles.ids)
+  end
 end

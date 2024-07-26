@@ -108,3 +108,5 @@ gem "roar"
 gem "shrine"
 # for image processing
 gem "mini_magick"
+# for tagging
+gem "gutentag", "~> 2.6"

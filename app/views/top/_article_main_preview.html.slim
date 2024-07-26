@@ -1,0 +1,20 @@
+.Card-Wrapper
+  .card.card-global
+    a href=show_article_path(article.id)
+      .card-wrapper.vertical.normal.normal.large
+        .card-col.card-start
+          .image-wrapper
+            figure.Picture
+              picture
+                source data-srcset=article.image_link type="image/webp"
+                img.lazyloadBg alt=article.title title=article.title src=article.image_link loading="lazy"
+        .card-col.card-end.justify-top
+          .card-title-wrapper.auto
+            h3.card-title.large.bold
+              = article.title
+        div
+          .max-h-40.overflow-hidden
+            = sanitize article.published_html_body
+          span
+            | ...
+

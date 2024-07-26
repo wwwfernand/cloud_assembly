@@ -2,6 +2,18 @@
 
 require 'rails_helper'
 
+class TestEmailFormatValidator
+  include ActiveModel::Validations
+
+  attr_accessor :email
+
+  validates :email, email_format: true
+
+  def initialize(email)
+    @email = email
+  end
+end
+
 describe EmailFormatValidator, type: :validator do
   describe '#validate_each' do
     [
@@ -10,12 +22,9 @@ describe EmailFormatValidator, type: :validator do
       ['numeric',      '02142',                 :invalid]
     ].each do |ctx, target, expected|
       context(ctx) do
-        let(:value) { target }
+        subject { TestEmailFormatValidator.new(target).valid? }
 
-        it do
-          expect(subject).send({ valid: :to, invalid: :not_to }
-                              .fetch(expected), be_valid)
-        end
+        it { is_expected.to be({ valid: true, invalid: false }.fetch(expected)) }
       end
     end
   end

@@ -17,5 +17,19 @@
 #
 FactoryBot.define do
   factory :user_image do
+    image_data do
+      {
+        id: Faker::File.file_name(dir: 'd/'),
+        storage: 'store',
+        metadata: { size: 500_000, filename: Faker::File.file_name, mime_type: 'image/png' },
+        derivatives: {
+          thumbnail: {
+            id: Faker::File.file_name(dir: 'd/'),
+            storage: 'store',
+            metadata: { size: 50_000, filename: Faker::File.file_name, mime_type: nil }
+          }
+        }
+      }
+    end
   end
 end
