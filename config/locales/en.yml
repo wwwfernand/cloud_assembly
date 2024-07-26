@@ -28,6 +28,8 @@
 #       enabled: "ON"
 
 en:
+  exception_handler:
+    internal_server_error: "<strong>Oops! Something went wrong!</strong> (code: %{status})"
   activerecord:
     errors:
       models:

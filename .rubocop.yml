@@ -13,6 +13,7 @@ AllCops:
     - 'db/migrate/*'
     - 'db/schema.rb'
     - 'config/boot.rb'
+    - 'config/deploy/*'
     - 'config/environment.rb'
     - 'config/importmap.rb'
     - 'config/puma.rb'

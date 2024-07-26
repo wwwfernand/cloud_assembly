@@ -79,6 +79,13 @@ group :development do
   gem 'rubocop-factory_bot', require: false
   # add schema summary to the top of each of models, specs, etc ...
   gem 'annotate'
+  # Use Capistrano for deployment
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', ">= 0.1.1"
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'passenger'
 end
 
 group :test do
@@ -110,3 +117,5 @@ gem "shrine"
 gem "mini_magick"
 # for tagging
 gem "gutentag", "~> 2.6"
+# for exception handling
+gem "exception_handler", "~> 0.8.0.0"
