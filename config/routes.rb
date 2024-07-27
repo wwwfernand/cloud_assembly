@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get 'up' => 'rails/health#show', as: :rails_health_check
 
-  root 'top#index'
+  root   'top#index'
+  get    'about',           to: 'top#about'
+  get    'privacy-policy',  to: 'top#privacy_policy'
+  get    'terms-of-use',    to: 'top#terms_of_use'
+  resource :contact_us, path: 'contact-us', only: [:new, :create]
+
   resources :users, only: :create
   post    'login',     to: 'user_sessions#create', constraints: { format: 'json' }
   delete  'logout',    to: 'user_sessions#destroy'

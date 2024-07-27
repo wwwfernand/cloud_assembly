@@ -41,8 +41,8 @@ class User < ApplicationRecord
     c.log_in_after_create = true
   end
 
-  has_many :articles, inverse_of: :user
-  has_many :user_images, inverse_of: :user
+  has_many :articles, inverse_of: :user, dependent: :destroy
+  has_many :user_images, inverse_of: :user, dependent: :destroy
 
   before_validation do
     self.email = email.strip if email.present?

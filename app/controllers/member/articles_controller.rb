@@ -66,7 +66,7 @@ module Member
 
     def update_params
       allowed_params = [{ draft_section_attributes: [:html_body] }]
-      allowed_params.concat(%i[title tag_list image_link]) unless @article.public?
+      allowed_params.push(:title, :tag_list, :image_link) unless @article.public?
       allowed_params << :publish_at if @state == Article::STATES[:publish_later]
       params.require(:article).permit(allowed_params)
     end

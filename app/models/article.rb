@@ -84,7 +84,7 @@ class Article < ApplicationRecord
   end
 
   def tag_list=(names)
-    self.tag_names = names.gsub(',', ' ').gsub(/[^a-z0-9 ]/, '').gsub(/ +/, ' ').strip.downcase.split(' ')
+    self.tag_names = names.gsub(',', ' ').gsub(/[^a-z0-9 ]/, '').gsub(/ +/, ' ').strip.downcase.split
   end
 
   private
