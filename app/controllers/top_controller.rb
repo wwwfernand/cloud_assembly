@@ -13,4 +13,16 @@ class TopController < ApplicationController
     @author_related_articles = authored_articles(target_article.user_id,
                                                  exclude_article_ids: main_article_ids + @tag_related_articles.ids)
   end
+
+  def about; end
+
+  def privacy_policy; end
+
+  def terms_of_use; end
+
+  private
+
+  def set_articles
+    @main_articles = latest_articles.load
+  end
 end
