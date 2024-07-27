@@ -1,6 +1,6 @@
-# Personal Blog Site
+# Cloud Assembly: Personal Blog Site
 
-My old blog website has been neglected for many years, and its design has become quite embarrassing. I am now considering starting a new blog site.
+My old blog website has been neglected for many years, and its design has become quite embarrassing. I am now considering starting a new blog site, [Cloud Assembly](https://cloud-asm.com/).
 
 Many of my current projects are still developed using the outdated versions of Ruby and Rails, some of which have already reached End-Of-Life (EOL). That is why, I have been eager to try Rails 7, and creating a new, simple blog site seems like the perfect opportunity to do so.
 
@@ -10,7 +10,7 @@ While I have traditionally used Bootstrap and yarn/npm for front-end development
 - It seems that [Hotwire Stimulus](https://stimulus.hotwired.dev/) simplifies the process of mapping data attributes to JavaScript-bundled controllers. I appreciate the concept of storing data and state directly in HTML rather than in JavaScript objects, as it can enhance maintainability and clarity.
 - [Tailwind CSS](https://tailwindcss.com/) offers a comprehensive set of pre-built utility classes for styling. However, unlike Bootstrap, it doesn't include a base set of components such as buttons by default. I am curious to see how this impacts rapid prototyping. On one hand, the lack of pre-made components might slow down initial development. On the other hand, Tailwind's approach allows for more customisation and avoids the need to override default styles, which could ultimately lead to a more tailored and cohesive design.
 
-# How to Post in the Blog
+# How to Post in the Blog ([cloud-asm.com](https://cloud-asm.com/))
 Posting a blog involves four states:
 
 ### Draft
@@ -109,6 +109,7 @@ $ bundle exec rspec spec
 
 ## Add-ons
    - [ ] Allow Users to Create Their Own Page Template
+   - [ ] Show cookie consent
 
 
 (*) These items will be developed later in the milestone.
