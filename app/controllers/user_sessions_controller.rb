@@ -22,22 +22,6 @@ class UserSessionsController < ApplicationController
     end
   end
 
-  def provider
-    omniauth = request.env['omniauth.auth']
-    return unless omniauth['provider'] == 'google_oauth2'
-
-    user = User.find_by_email(email)
-    @user_session = UserSession.new(user)
-    if @user_session.save
-      flash[:success] = 'Login successful!'
-      redirect_to session[:return_to] ||= markets_url
-    else
-      flash[:error] = "Your Account doesn't exists. Please contact
-                        Xxxxx support."
-      redirect_to :login
-    end
-  end
-
   def destroy
     current_user_session.destroy if current_user
     respond_to do |format|

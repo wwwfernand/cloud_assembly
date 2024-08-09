@@ -1,22 +1,20 @@
-.CardList.Card-Column.Card-Spacing-3
+.CardList.Card-Column
   - articles.each do |article|
     .Card-Item
       .card.card-global
         a href=show_article_path(article.id)
-          .card-wrapper.vertical.normal.normal.small
+          div
             .card-col.card-start
               .image-wrapper
                 figure.Picture
-                  picture
-                    source data-srcset=article.image_link type="image/webp"
-                    img.lazyloadBg alt=article.title title=article.title loading="lazy"
+                  img.lazyloadBg alt=article.title title=article.title loading="lazy" src=article.image_link
             .card-col.card-end.justify-top.authorOrderScope
               .card-title-wrapper.auto
                 .card-title.small.bold
                   = article.title
               .card-summary-wrapper.overflow-hidden.max-h-40
                 .card-summary.small
-                  = sanitize article.published_html_body
+                  = raw article.published_html_body
               .card-author-wrapper
                 .author-profile-wrapper
                   = render 'users/avatar', user: article.user

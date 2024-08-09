@@ -1,8 +1,8 @@
-#loginForm.modal.z-10.hidden.mi-login [ data-controller="user-sessions" 
+.modal.z-10.hidden.mi-login [ data-controller="user-sessions" 
   data-user-sessions-target="formModal"
-  data-user-sessions-username-value=current_user&.username 
   data-user-sessions-isopen-value="false"
-  data-action="showLoginForm@window->user-sessions#showLoginForm
+  data-user-sessions-is-loaded-value="false"
+  data-action="showLoginForm@window->user-sessions#showForm
     logoutUser@window->user-sessions#logout
     keyup@window->user-sessions#closeWithKeyboard"
 ]

@@ -3,8 +3,7 @@
     .Footer-inner
       .row
         .col-12.col-sm-6.col-md-4.col-lg-3.about-col
-          a.logo.nuxt-link-exact-active.nuxt-link-active href="#{root_path}"
-            img src="#{image_url('logo.png')}" title="#{site_name}"
+          = render 'shared/logo'
           ul.social-media
             li
               a href="javascript:void(0)" target="_blank"
@@ -27,7 +26,7 @@
             .col-12.col-sm-6.col-lg-4
               ul.footer-menu
                 li
-                  a href=about_path
+                  a href=about_us_path
                     | About Us
                 li
                   a href=terms_of_use_path

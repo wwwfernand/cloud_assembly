@@ -12,7 +12,11 @@ html.light-mode lang="en"
     == yield :head if content_for?(:head)
 
   body
-    .main data-controller="base"
+    .main [ data-controller="user-status"
+      data-user-status-username-value=current_user&.username
+      class="user-status-object"
+      data-action="requireLogin@window->user-status#requireLogin"
+    ]
       = render partial: 'shared/header'
       .content
         div
