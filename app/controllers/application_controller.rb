@@ -44,6 +44,7 @@ class ApplicationController < ActionController::Base
 
   def show_errors(exception)
     # TODO: notify error
+    Rails.logger.error("#{self.class.name}.#{__method__} Exception: #{exception}")
     errors = JSON::Errors.from_exception(error: exception, object: nil)
     render json: errors,
            status: ActionDispatch::ExceptionWrapper.status_code_for_exception(exception.class.name)

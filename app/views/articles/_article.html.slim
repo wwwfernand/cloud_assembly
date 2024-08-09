@@ -1,8 +1,10 @@
+= content_for :title, article.title
 = cache article do
   .article-logo
-    img src=article.image_link loading="lazy" title=article.title
+    - if article.image_link.present?
+      img src=article.image_link loading="lazy" title=article.title
   .vw-article-body
-    .vw-article-header.mb-3
+    .vw-article-header
       .vw-tags
         - @article.tags.each do |tag|
           a.tag-items href=article_tag_path(tag.name) title=tag.name
@@ -16,4 +18,4 @@
             = datetime_str(publish_at)
             |  |
     .vw-article-content
-      = sanitize body
+      = raw body

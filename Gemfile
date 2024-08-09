@@ -76,7 +76,7 @@ group :development do
   gem "rubocop-capybara", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-rspec_rails", require: false
-  gem 'rubocop-factory_bot', require: false
+  gem "rubocop-factory_bot", require: false
   # add schema summary to the top of each of models, specs, etc ...
   gem 'annotate'
   # Use Capistrano for deployment

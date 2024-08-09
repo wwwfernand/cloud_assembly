@@ -3,19 +3,15 @@ import ModalsController from "controllers/modals_controller";
 export default class extends ModalsController {
   static targets = ["errorBox", "formModal"];
   static values = {
-    username: String,
     isopen: { type: Boolean, default: false },
+    isLoaded: { type: Boolean, default: false },
   };
 
   connect() {
-    if (window.location.pathname === "/new") this.showLoginForm();
-  }
-
-  showLoginForm(event) {
-    if (this.isEmptyOrSpaces(this.usernameValue)) {
-      if (event) event.stopImmediatePropagation();
-      this.scrollToTop();
-      this.showForm(event);
+    if (!this.isLoadedValue) {
+      if (window.location.pathname === "/new")
+        window.dispatchEvent(new CustomEvent("requireLogin"));
+      this.isLoadedValue = true;
     }
   }
 

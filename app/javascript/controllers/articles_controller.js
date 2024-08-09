@@ -1,4 +1,5 @@
-import BaseController from "controllers/base_controller";
+import UserStatusController from "controllers/user_status_controller";
+
 import {
   ClassicEditor,
   AccessibilityHelp,
@@ -62,7 +63,7 @@ const STATES = {
   publish_later: "publish_later",
 };
 
-export default class extends BaseController {
+export default class extends UserStatusController {
   static targets = [
     "errorBox",
     "editor",
@@ -82,6 +83,8 @@ export default class extends BaseController {
     content: { type: String },
   };
 
+  static outlets = ["user-status"];
+
   editor = null;
 
   connect() {
@@ -99,6 +102,10 @@ export default class extends BaseController {
         this.editor.setData(initialData);
       })
       .catch((error) => console.error(error));
+  }
+
+  userLoggedIn() {
+    this.togglePublishElements();
   }
 
   updateFormInputs() {
@@ -170,7 +177,11 @@ export default class extends BaseController {
   }
 
   togglePublishElements() {
-    if (!this.isLoggedIn()) {
+    if (
+      this.userStatusOutlets.length == 0 ||
+      !this.userStatusOutlet ||
+      !this.userStatusOutlet.hasUsernameValue
+    ) {
       this.publishNowBtnTarget.classList.add("hidden");
       this.publishLaterBoxTarget.classList.add("hidden");
       return;

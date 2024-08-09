@@ -6,23 +6,11 @@ const DEVICE_SP = "sp";
 export default class extends Controller {
   dispatchLoginForm() {
     window.dispatchEvent(new CustomEvent("showLoginForm"));
+    window.dispatchEvent(new CustomEvent("clearForm"));
   }
 
   scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-
-  isLoggedIn() {
-    return !this.isEmptyOrSpaces(
-      this.#userProfileTag().dataset.userSessionsUsernameValue,
-    );
-  }
-
-  setCurrentUser(event) {
-    if (!this.isLoggedIn()) {
-      event.stopImmediatePropagation();
-      dispatchLoginForm();
-    }
   }
 
   addErrMsgs(ulTag, body) {
@@ -46,31 +34,12 @@ export default class extends Controller {
   }
 
   isEmptyOrSpaces(str) {
-    return str === null || str.match(/^ *$/) !== null;
+    if (str) return str.match(/^ *$/) !== null;
+    return true;
   }
 
-  showUserMenu() {
-    document.querySelectorAll(".login-zumi").forEach((el) => {
-      el.classList.remove("hidden");
-    });
-    document.querySelectorAll(".mi-login").forEach((el) => {
-      el.classList.add("hidden");
-    });
-    let targetDevice = this.#targetDevice();
-    document.querySelectorAll(".login-zumi-" + targetDevice).forEach((el) => {
-      el.classList.remove("hidden");
-    });
-    document.querySelectorAll(".mi-login-" + targetDevice).forEach((el) => {
-      el.classList.add("hidden");
-    });
-  }
-
-  #targetDevice() {
+  targetDevice() {
     if ($(window).width() > 992) return DEVICE_PC;
     return DEVICE_SP;
-  }
-
-  #userProfileTag() {
-    return document.getElementById("loginForm");
   }
 }

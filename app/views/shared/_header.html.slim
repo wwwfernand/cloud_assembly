@@ -1,11 +1,11 @@
-.Header [ data-controller="user-menu" 
-  data-action="keyup@window->user-menu#closeWithKeyboard"
+.Header [ data-controller="user-menu"
+  data-action="keyup@window->user-menu#closeWithKeyboard
+    userLoggedIn@window->user-status#userLoggedIn"
 ]
   .row.header-top
     .Header-inner
       .Header-Start
-        a.logo.nuxt-link-exact-active.nuxt-link-active href="#{root_path}"
-          img src="#{image_url('logo.png')}" title="#{site_name}"
+        = render 'shared/logo'
       .Header-End
         nav.Navigation
           ul.Navigation-list
@@ -25,7 +25,7 @@
                   svg.icon.sprite-icons xmlns="http://www.w3.org/2000/svg"
                     use href="#{image_url('icons.svg')}#i-search" xlink:href="#{image_url('icons.svg')}#i-search"
           .item.login-zumi class=('hidden' unless current_user.present?)
-            a#currentUser.profile-icon href=member_user_path data-username=current_user&.username
+            a#currentUser.profile-icon href=member_user_path
               svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg"
                 g stroke-width="0"
                 g stroke-linecap="round" stroke-linejoin="round"

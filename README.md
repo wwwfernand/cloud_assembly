@@ -1,6 +1,6 @@
-# Cloud Assembly: Personal Blog Site
+# Cloud Assembly Hobby-Blog: Personal Blog Site
 
-My old blog website has been neglected for many years, and its design has become quite embarrassing. I am now considering starting a new blog site, [Cloud Assembly](https://cloud-asm.com/).
+My old blog website has been neglected for many years, and its design has become quite embarrassing. I am now considering starting a new blog site, [Cloud Assembly Hobby-Blog](https://cloud-asm.com/).
 
 Many of my current projects are still developed using the outdated versions of Ruby and Rails, some of which have already reached End-Of-Life (EOL). That is why, I have been eager to try Rails 7, and creating a new, simple blog site seems like the perfect opportunity to do so.
 
@@ -28,7 +28,7 @@ The contents of published articles can still be revised. While the original cont
 
 # Getting started
 
-This repository will show the step-by-step developments of my blog site, Cloud Assembly. The site will be an open platform where any users can post content. A personal page for each user will be included. If you would like to customise your own personal page template, feel free to create a Pull Request (PR). Please note that a Docker environment will not be set up anytime soon, so you'll need to prepare your own development environment in the meantime.
+This repository will show the step-by-step developments of my blog site, Cloud Assembly Hobby-Blog. The site will be an open platform where any users can post content. A personal page for each user will be included. If you would like to customise your own personal page template, feel free to create a Pull Request (PR). Please note that a Docker environment will not be set up anytime soon, so you'll need to prepare your own development environment in the meantime.
 
 ## Pre-requisite
 
@@ -89,20 +89,22 @@ $ bundle exec rspec spec
 ## Article Management
    - [x] Draft
    - [x] Publish
+   - [x] Revise (only content)
 
 ## Main Pages
-   - [ ] Top
-   - [ ] Article View
-   - [ ] Articles by Tags (*)
+   - [x] Top
+   - [x] Article View
+   - [x] Articles by Tags
    - [ ] Contact Us (*)
-   - [ ] Privacy Policies, and other static pages (*)
+   - [x] Privacy Policies, and other static pages (*)
 
 ## Image Management
    - [x] Upload Image
    - [x] Add Image to Article
+   - [x] Allow Multiple Images upload
 
 ## Tagging
-   - [ ] Add Tagging to Articles
+   - [x] Add Tagging to Articles
 
 ## Search
    - [ ] Implement Search Functionality

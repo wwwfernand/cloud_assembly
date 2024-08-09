@@ -14,7 +14,7 @@ module CloudAssembly
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
-    config.autoload_lib(ignore: %w[assets tasks])
+    config.autoload_lib(ignore: %w[assets tasks templates])
     config.generators do |generate|
       generate.orm :active_record, primary_key_type: :uuid
     end
@@ -42,7 +42,7 @@ module CloudAssembly
       },
 
       # This is an entirely NEW structure for the "layouts" area
-      # You're able to define layouts, notifications etc ?
+      # You're able to define layouts, notifications etc ↴
 
       # All keys interpolated as strings, so you can use symbols, strings or integers where necessary
       exceptions: {

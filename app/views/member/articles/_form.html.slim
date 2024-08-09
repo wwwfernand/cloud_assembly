@@ -1,8 +1,11 @@
 div [data-controller="articles"
   data-articles-index-url-value=member_articles_path
   data-articles-tag-list-value=""
-  data-articles-content-value="" ]
-  = form_with(model: article, url: url, format: :json, id: 'articleForm', data: { 'articles-target': "articleForm", action: 'submit->base#setCurrentUser submit->articles#onSubmit' }) do |f|
+  data-articles-content-value=""
+  data-articles-user-status-outlet=".user-status-object"
+  data-action="userLoggedIn@window->articles#userLoggedIn"
+]
+  = form_with(model: article, url: url, format: :json, id: 'articleForm', data: { 'articles-target': "articleForm", action: 'submit->user-status#requireLogin submit->articles#onSubmit' }) do |f|
     .error-notice.hidden data-articles-target="errorBox"
       .oaerror.danger
         ul
@@ -24,7 +27,7 @@ div [data-controller="articles"
 
     .flex.justify-between.mt-8
       .flex.justify-start.content-center
-        = link_to "< Back to My Blogs", member_articles_path, class: "px-8 py-3.5 cursor-pointer"
+        = link_to "< Back to My Blogs", member_articles_path, class: "cursor-pointer back-btn-link"
       .flex.justify-end role="group"
         = f.submit 'Draft', name: 'state', value: Article::STATES[:draft], class: "bg-yellow-500 hover:bg-yellow-400 text-white font-medium border-b-4 border-yellow-700 hover:border-yellow-500 rounded text-sm px-8 py-3.5 cursor-pointer"
         = f.submit 'Publish Now', name: 'state', value: Article::STATES[:publish_now], class: "focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 px-8 py-3.5 ml-6 cursor-pointer hidden", data: { 'articles-target': "publishNowBtn" }

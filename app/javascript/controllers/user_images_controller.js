@@ -1,8 +1,8 @@
-import BaseController from "controllers/base_controller";
+import UserStatusController from "controllers/user_status_controller";
 import { FetchRequest } from "@rails/request.js";
 import "slick-carousel-latest";
 
-export default class extends BaseController {
+export default class extends UserStatusController {
   static targets = [
     "uploadForm",
     "errorBox",
@@ -17,6 +17,8 @@ export default class extends BaseController {
     maxPage: { type: Number, default: 1 },
   };
 
+  static outlets = ["user-status"];
+
   connect() {
     this.#loadCarousel();
     $(".carousel").on("edge", () => {
@@ -25,8 +27,21 @@ export default class extends BaseController {
     this.loadImages();
   }
 
+  clearForm() {
+    this.inputFileTarget.value = "";
+  }
+
+  userLoggedIn() {
+    this.loadImages();
+  }
+
   async loadImages() {
-    if (!this.isLoggedIn()) return;
+    if (
+      this.userStatusOutlet.lengths == 0 ||
+      !this.userStatusOutlet ||
+      !this.userStatusOutlet.hasUsernameValue
+    )
+      return;
     if (!this.indexUrlValue) return;
     if (this.currPageValue >= this.maxPageValue) return;
     this.currPageValue += 1;
@@ -58,40 +73,40 @@ export default class extends BaseController {
         which returns an empty file
     */
     const inputFileLocalTarget = document.getElementById("user_image_image");
-    if (!this.isLoggedIn()) {
-      inputFileLocalTarget.value = "";
-      return this.dispatchLoginModal();
-    }
-    if (inputFileLocalTarget.files.length == 0) {
-      inputFileLocalTarget.value = "";
-      return;
-    }
+    if (inputFileLocalTarget.files.length == 0) return this.clearForm();
 
     const uploadFormTarget = document.getElementById("userImageForm"); // stimulus file Target is slow
     fetch(uploadFormTarget.action, {
       method: uploadFormTarget.method,
       body: new FormData(uploadFormTarget),
     }).then((response) => {
+      const ulTag = this.errorBoxTarget.getElementsByTagName("ul")[0];
       if (response.ok) {
         response.json().then((data) => {
-          this.#prependImage(this.#newSwipeEl(data));
+          data.images.forEach((img) =>
+            this.#prependImage(this.#newSwipeEl(img)),
+          );
+          if (data.errors > 0) {
+            this.addErrMsgs(ulTag, data.errors);
+            this.errorBoxTarget.classList.remove("hidden");
+          }
         });
       } else {
-        let errorStatus = response.status;
-        const ulTag = this.errorBoxTarget.getElementsByTagName("ul")[0];
-        response.json().then((data) => {
-          if (errorStatus == 422 || errorStatus == 403) {
-            this.addErrMsgs(ulTag, data);
-          } else {
-            this.addErrMsgs(ulTag, [data.message]);
-          }
-          this.errorBoxTarget.classList.remove("hidden");
-          if (errorStatus === 403) {
-            this.dispatchLoginModal();
-          }
-        });
+        const errorStatus = response.status;
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+          response.json().then((data) => {
+            if (errorStatus == 422 || errorStatus == 403)
+              this.addErrMsgs(ulTag, data);
+            else this.addErrMsgs(ulTag, [data.message]);
+            if (errorStatus === 403) this.dispatchLoginForm();
+          });
+        } else {
+          response.text().then((text) => this.addErrMsgs(ulTag, [text]));
+        }
+        this.errorBoxTarget.classList.remove("hidden");
       }
-      inputFileLocalTarget.value = "";
+      this.clearForm();
     });
   }
 

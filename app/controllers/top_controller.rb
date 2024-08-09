@@ -8,13 +8,13 @@ class TopController < ApplicationController
 
   def index
     target_article = @main_articles.first
-    main_article_ids = @main_articles.ids
+    main_article_ids = @main_articles.map(&:id)
     @tag_related_articles = tagged_articles(target_article.tag_names, exclude_article_ids: main_article_ids)
     @author_related_articles = authored_articles(target_article.user_id,
                                                  exclude_article_ids: main_article_ids + @tag_related_articles.ids)
   end
 
-  def about; end
+  def about_us; end
 
   def privacy_policy; end
 
@@ -23,6 +23,6 @@ class TopController < ApplicationController
   private
 
   def set_articles
-    @main_articles = latest_articles.load
+    @main_articles = ArticleDecorator.decorate_collection(latest_articles.load)
   end
 end
